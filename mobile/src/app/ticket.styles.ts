@@ -3,7 +3,6 @@ import { tv } from "tailwind-variants";
 export const ticketStyles = tv({
   slots: {
     base: "flex-1 bg-green-500",
-    // scrollContainer: "-mt-28 -z-10",
     scrollContainer: "-mt-28",
     scrollContent: "px-8 pb-16",
     header: "z-10",

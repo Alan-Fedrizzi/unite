@@ -1,6 +1,5 @@
 import "@/styles/global.css";
 import { Slot } from "expo-router";
-// import { StatusBar } from "expo-status-bar";
 
 import { Loading } from "@/components/Loading";
 import {
@@ -22,16 +21,4 @@ export default function Layout() {
   }
 
   return <Slot />;
-  // <>
-  {
-    /* vamo passar a status bar para a Home */
-  }
-  {
-    /* <StatusBar style="light" /> */
-  }
-  {
-    /* <StatusBar style="light" backgroundColor={colors.orange[500]} /> */
-  }
-  // {fontsLoaded ? <Slot /> : <Loading />}
-  // </>
 }

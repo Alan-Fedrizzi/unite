@@ -11,7 +11,6 @@ import { homeStyles } from "./styles";
 
 const { base, image, inputContainer, link } = homeStyles();
 
-// para expo route entender que é a rota inicial, exportar como default (nome do arquivo já é index, que ele procura)
 export default function Home() {
   const [code, setCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -28,25 +27,16 @@ export default function Home() {
       setIsLoading(true);
 
       const { data } = await api.get(`/attendees/${code}/badge`);
-      // dentro de data:
-      //   badge: z.object({
-      //   name: z.string(),
-      //   email: z.string().email(),
-      //   eventTitle: z.string(),
-      //   checkInURL: z.string().url(),
-      // console.log(data.badge);
-      // armazenar essas infos. vamos usar async storage, salvar no dispositivo
-      // vamos usar https://zustand-demo.pmnd.rs/ para armazenar estado global da aplicação
+
       badgeStore.save(data.badge);
     } catch (error) {
       console.log(error);
-      // se deu certo, o usuário vai ser redirecionado, por isso não precisa ser no finally o loagind false
+
       setIsLoading(false);
       Alert.alert("Ingresso", "Ingresso não encontrado.");
     }
   }
 
-  // se já tem data, ou se muda o data, redireciona
   if (badgeStore.data?.checkInURL) {
     return <Redirect href="/ticket" />;
   }
@@ -70,18 +60,15 @@ export default function Home() {
           />
           <Input.Field
             placeholder="Código do ingresso"
-            // onChangeText={(value) => setCode(value)}
             onChangeText={setCode}
           />
         </Input>
 
         <Button
           title="Acessar credencial"
-          // onPress={() => handleAccessCredentials()}
           onPress={handleAccessCredentials}
           isLoading={isLoading}
         />
-        {/* <Button title="Cadastrar" isLoading /> */}
 
         <Link href="/register" className={link()}>
           Ainda não possui ingresso?
@@ -90,10 +77,3 @@ export default function Home() {
     </View>
   );
 }
-
-// cd server
-// npm run dev
-// npx prisma studio
-
-// cd mobile
-// npm start

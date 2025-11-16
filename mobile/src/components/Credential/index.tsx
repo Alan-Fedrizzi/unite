@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  useWindowDimensions
+  useWindowDimensions,
 } from "react-native";
 import { credentialStyles } from "./styles";
 import { BadgeStore } from "@/store/badge-store";
@@ -25,7 +25,6 @@ const {
   buttonAvatar,
   name,
   email,
-  qrcode,
   ampliarButton,
   ampliar,
 } = credentialStyles();
@@ -37,35 +36,30 @@ type Props = {
   onExpandQRCode?: () => void;
 };
 
-export function Credential({
-  data,
-  // image,
-  onChangeAvatar,
-  onExpandQRCode,
-}: Props) {
+export function Credential({ data, onChangeAvatar, onExpandQRCode }: Props) {
   const { height } = useWindowDimensions();
 
   return (
-    <MotiView className={base()}
+    <MotiView
+      className={base()}
       from={{
         opacity: 0,
-        // altura da tela
         translateY: -height,
-        rotateZ: '50deg',
-        rotateY: '30deg',
-        rotateX: '30deg'
+        rotateZ: "50deg",
+        rotateY: "30deg",
+        rotateX: "30deg",
       }}
       animate={{
         opacity: 1,
         translateY: 0,
-        rotateZ: '0deg',
-        rotateY: '0deg',
-        rotateX: '0deg'
+        rotateZ: "0deg",
+        rotateY: "0deg",
+        rotateX: "0deg",
       }}
       transition={{
-        type: 'spring',
+        type: "spring",
         translateY: { damping: 20, stiffness: 100 },
-        rotateZ: { damping: 15, mass: 3, stiffness: 100 }
+        rotateZ: { damping: 15, mass: 3, stiffness: 100 },
       }}
     >
       <Image
@@ -80,7 +74,6 @@ export function Credential({
         >
           <View className={textContainer()}>
             <Text className={text()}>{data.eventTitle}</Text>
-            {/* o bak não manda o id */}
             <Text className={text()}>#{data.id}</Text>
           </View>
 
@@ -94,8 +87,6 @@ export function Credential({
             <Image
               className={avatar()}
               source={{
-                // uri: "https://github.com/Alan-Fedrizzi.png",
-                // uri: image,
                 uri: data.image,
               }}
             />
@@ -114,10 +105,6 @@ export function Credential({
         <Text className={email()}>{data.email}</Text>
 
         <QRCode value={data.checkInURL} size={120} />
-        {/* <Image
-          className={qrcode()}
-          source={require("@/assets/ticket/qrcode.png")}
-        /> */}
 
         <TouchableOpacity
           className={ampliarButton()}

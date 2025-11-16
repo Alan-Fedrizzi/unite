@@ -19,7 +19,6 @@ function Field({ ...rest }: TextInputProps) {
   );
 }
 
-// insere o Filed dentro do Input
 Input.Field = Field;
 
 export { Input };

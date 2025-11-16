@@ -36,24 +36,18 @@ const {
 } = ticketStyles();
 
 export default function Ticket() {
-  // const [image, setImage] = useState(""); // tipagem implícita
   const [expandedQRCode, setExpandedQRCode] = useState(false);
   const badgeStore = useBadgeStore();
 
   async function handleSelectImage() {
-    // https://app.rocketseat.com.br/classroom/nlw-15-unite-react-native/group/nlw-15-unite-react-native/lesson/desenvolvimento-avancado-e-upload-de-imagens
-    // -23:40 mostra como adicionar imagem no emulador
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
-        // mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        // MediaTypeOptions is deprecated
         mediaTypes: ["images"],
         allowsEditing: true,
         aspect: [4, 4],
       });
 
       if (result.assets) {
-        // setImage(result.assets[0].uri);
         badgeStore.updateAvater(result.assets[0].uri);
       }
     } catch (error) {
@@ -75,7 +69,6 @@ export default function Ticket() {
     }
   }
 
-  // se não tem data, volta par ao início
   if (!badgeStore.data?.checkInURL) {
     return <Redirect href="/" />;
   }
@@ -92,23 +85,21 @@ export default function Ticket() {
       >
         <Credential
           data={badgeStore.data}
-          // image="https://github.com/Alan-Fedrizzi.png"
-          // image={image}
           onChangeAvatar={handleSelectImage}
           onExpandQRCode={() => setExpandedQRCode(true)}
         />
 
         <MotiView
           from={{
-            translateY: 0
+            translateY: 0,
           }}
           animate={{
-            translateY: 10
+            translateY: 10,
           }}
           transition={{
             loop: true,
-            type: 'timing',
-            duration: 700
+            type: "timing",
+            duration: 700,
           }}
         >
           <FontAwesome
@@ -116,7 +107,7 @@ export default function Ticket() {
             name="angle-double-down"
             size={24}
             color={colors.gray[300]}
-            />
+          />
         </MotiView>
 
         <Text className={text()}>Compartilhar credencial</Text>

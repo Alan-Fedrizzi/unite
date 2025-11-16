@@ -35,8 +35,6 @@ export const useBadgeStore = create(
         })),
     }),
     {
-      // config do async storage
-      //name á  key
       name: "nlw-unite:badge",
       storage: createJSONStorage(() => AsyncStorage),
     }

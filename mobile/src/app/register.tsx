@@ -12,14 +12,8 @@ import { homeStyles } from "./styles";
 
 const { base, image, inputContainer, link } = homeStyles();
 
-// para ver o event id
-// cd server
-// npx prisma studio
-// vai abrir uma aba no navegador
-// 9e9bd979-9d10-4915-b339-3786b1634f33
 const EVENT_ID = "9e9bd979-9d10-4915-b339-3786b1634f33";
 
-// para expo route entender que é a rota inicial, exportar como default (nome do arquivo já é index, que ele procura)
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,8 +34,6 @@ export default function Register() {
         email,
       });
 
-      // server\src\routes\register-for-event.ts
-      // retorna o attendeeId
       if (registerResponse.data.attendeeId) {
         const badgeResponse = await api.get(
           `/attendees/${registerResponse.data.attendeeId}/badge`
@@ -60,10 +52,7 @@ export default function Register() {
       console.log(error);
       setIsLoading(false);
 
-      // essa exceção vem da requisição? vem do axios?
       if (axios.isAxiosError(error)) {
-        // server\src\routes\register-for-event.ts
-        // linha 41
         if (
           String(error.response?.data?.message).includes("already registered")
         ) {
@@ -110,7 +99,6 @@ export default function Register() {
 
         <Button
           title="Realizar inscrição"
-          // onPress={() => handleRegister()}
           onPress={handleRegister}
           isLoading={isLoading}
         />
