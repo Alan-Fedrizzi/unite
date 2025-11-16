@@ -1,6 +1,6 @@
 # unite
 
-Project from the course: **[NLWl 15 Unite React-Native](https://app.rocketseat.com.br/classroom/nlw-15-unite-react-native)** by **[RocketSeat](https://www.rocketseat.com.br/)**.
+Project from the course: **[NLW 15 Unite React-Native](https://app.rocketseat.com.br/classroom/nlw-15-unite-react-native)** by **[RocketSeat](https://www.rocketseat.com.br/)**.
 
 ## Mobile
 
