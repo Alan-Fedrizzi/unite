@@ -12,6 +12,8 @@ cd mobile
 npm i
 ```
 
+In the file mobile/src/server/api.ts, insert the IP of your machine.
+
 ```ts
 npm start
 ```
